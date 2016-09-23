@@ -9,14 +9,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">LITTLE FORUM</a>
+			<a class="navbar-brand" href="/home">LITTLE FORUM</a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 				</li>
 				<li class="active"><a href="#">Username <span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">LOGOUT <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="/home">LOGIN <span class="sr-only">(current)</span></a></li>
 			</ul>
 		</div>
 	</div>

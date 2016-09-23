@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tes', function () {
+
+Route::get('/home', function () {
     return view('content.index');
 });
 
+
+Route::resource('users', 'User\UserController');

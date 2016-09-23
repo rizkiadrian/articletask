@@ -8,19 +8,12 @@
                     <form action="">
                         <legend>Sign In</legend>
                         <div class="form-group">
-                            <label for="username-email">E-mail or Username</label>
-                            <input value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                            <label for="username-email">E-mail</label>
+                            {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control'])!!}
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input id="password" value='' placeholder="Password" type="text" class="form-control" />
-                        </div>
-                        <div class="input-group">
-                          <div class="checkbox">
-                            <label>
-                              <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                            </label>
-                          </div>
+                            {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control', 'required' => 'required'])!!}
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login" />
@@ -28,7 +21,7 @@
                         <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">
                             <p class="text-center m-t-xs text-sm">Do not have an account?</p> 
-                            <a href="/register/" class="btn btn-default btn-block m-t-md">Create an account</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-default btn-block m-t-md">Create an account</a>
                         </div>
                     </form>
                 

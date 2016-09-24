@@ -22,7 +22,7 @@
                         <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">
                             <p class="text-center m-t-xs text-sm">Do not have an account?</p> 
-                            <a href="{{ route('users.create') }}" class="btn btn-default btn-block m-t-md">Create an account</a>
+                            <a href="/register" class="btn btn-default btn-block m-t-md">Create an account</a>
                         </div>
                     </form>
                 

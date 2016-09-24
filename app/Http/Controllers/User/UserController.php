@@ -17,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
+        
     }
 
     /**
@@ -38,11 +39,13 @@ class UserController extends Controller
      */
     public function store(RegisterRequest $request)
     {
+        // store registered user
     $data = new User();
     $data = $request->all();
     $user = Sentinel::registerAndActivate($data);
     $user->save();
-    return redirect()->route('users.index');
+    return redirect()->route('login.index');
+
     }
 
     /**
@@ -90,18 +93,15 @@ class UserController extends Controller
         //
     }
 
-    public function login(Request $request)
+public function CreateRole()
     {
-        
-       
-  }  
-
-   public function logout()
-    {
-        $user = Sentinel::getUser();
-        Sentinel::logout($user, true);
-        return redirect('/home');
-        
+        // create role if needed
+     Sentinel::getRoleRepository()->createModel()->create([
+    'name' => 'Admin',
+    'slug' => 'Admin',
+]);
     }
+    
+
     }
 

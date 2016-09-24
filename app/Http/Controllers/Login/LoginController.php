@@ -17,7 +17,19 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        // route admin to different page
+        if (Sentinel::check()){
+        $user = Sentinel::getUser();
+        if ( !$user->inRole('Admin')){
+        return view('content.profile', compact('user'));
+    }
+    else{
+         return view('content.profileadmin', compact('user'));
+    }
+}
+else{
+     return view('content.profile', compact('user'));
+}
     }
 
     /**
@@ -38,10 +50,11 @@ class LoginController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // login function
          if ($auth = Sentinel::authenticate($request->all()))
 
     {
-        return redirect()->route('users.index');
+        return redirect()->route('login.index');
     }
 
        flash('user or name not recognized');
@@ -92,4 +105,14 @@ class LoginController extends Controller
     {
         //
     }
+
+     public function logout()
+    {
+        // logout function
+        $user = Sentinel::getUser();
+        Sentinel::logout($user, true);
+        return redirect('/home');
+    }
+
+   
 }

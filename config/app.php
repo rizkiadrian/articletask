@@ -165,7 +165,7 @@ return [
           Barryvdh\Debugbar\ServiceProvider::class,
           Collective\Html\HtmlServiceProvider::class,
           Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class, 
-
+       Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Package Service Providers...
          */

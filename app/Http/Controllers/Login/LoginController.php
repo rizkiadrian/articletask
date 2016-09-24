@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
-use Sentinel;
+namespace App\Http\Controllers\Login;
+
 use Illuminate\Http\Request;
-use App\User;
+use Sentinel;
 use App\Http\Requests;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('content.register');
+        //
     }
 
     /**
@@ -36,13 +36,16 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function store(LoginRequest $request)
     {
-    $data = new User();
-    $data = $request->all();
-    $user = Sentinel::registerAndActivate($data);
-    $user->save();
-    return redirect()->route('users.index');
+         if ($auth = Sentinel::authenticate($request->all()))
+
+    {
+        return redirect()->route('users.index');
+    }
+
+       flash('user or name not recognized');
+       return redirect('/home');    
     }
 
     /**
@@ -89,19 +92,4 @@ class UserController extends Controller
     {
         //
     }
-
-    public function login(Request $request)
-    {
-        
-       
-  }  
-
-   public function logout()
-    {
-        $user = Sentinel::getUser();
-        Sentinel::logout($user, true);
-        return redirect('/home');
-        
-    }
-    }
-
+}

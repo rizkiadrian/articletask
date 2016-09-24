@@ -20,5 +20,9 @@ Route::get('/home', function () {
     return view('content.index');
 });
 
-
+Route::get('/tes', function () {
+    return view('content.profile');
+});
 Route::resource('users', 'User\UserController');
+Route::resource('login', 'Login\LoginController');
+

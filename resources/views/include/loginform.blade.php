@@ -7,6 +7,7 @@
             <div class="login-box well">
                     <form action="">
                         <legend>Sign In</legend>
+                      
                         <div class="form-group">
                             <label for="username-email">E-mail</label>
                             {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control'])!!}
@@ -16,7 +17,7 @@
                             {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control', 'required' => 'required'])!!}
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login" />
+                            {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
                         </div>
                         <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">

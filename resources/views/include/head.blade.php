@@ -8,4 +8,5 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <link rel="stylesheet" href="/css/navbar.css">
 <link rel="stylesheet" href="/css/loginform.css">
 <link rel="stylesheet" href="/css/articlebox.css">
+<link rel="stylesheet" href="/css/profile.css">
 

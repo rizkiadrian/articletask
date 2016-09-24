@@ -19,7 +19,7 @@
                         <div class="form-group">
                             {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
                         </div>
-                        <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
+                        <span class='text-center'><a href="/forgotp" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">
                             <p class="text-center m-t-xs text-sm">Do not have an account?</p> 
                             <a href="/register" class="btn btn-default btn-block m-t-md">Create an account</a>

@@ -23,8 +23,8 @@ Route::get('/home', function () {
 Route::get('/register', function () {
     return view('content.register');
 });
-Route::get('/tes', function () {
-    return view('content.userindex');
+Route::get('/forgotp', function () {
+    return view('content.forgotpass');
 });
 Route::resource('users', 'User\UserController');
 Route::resource('login', 'Login\LoginController');
@@ -37,6 +37,11 @@ Route::get('admin/userlist',[
     'as' => 'userlist.index',
     'uses' => 'Admin\UserlistController@index',
     'middleware' => 'CheckAdmin'
+]);
+
+Route::post('email',[
+    'as' => 'email.sendemail',
+    'uses' => 'Email\ConfirmUserController@store'  
 ]);
 
 Route::delete('admin/deleteuser/{id}',[

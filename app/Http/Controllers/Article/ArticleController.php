@@ -67,7 +67,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('content.articleshow', compact('article'));
     }
 
     /**
@@ -78,7 +79,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('content.editarticle', compact('article'));
     }
 
     /**
@@ -90,7 +92,10 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->article = $request->article;
+        $article->save();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -101,6 +106,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete();
+        return redirect()->route('article.index');
     }
 }

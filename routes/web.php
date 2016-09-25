@@ -70,4 +70,28 @@ Route::delete('admin/deleteuser/{id}',[
     'middleware' => 'CheckAdmin'
 ]);
 
+Route::get('articles/show/{id}',[
+    'as' => 'article.show',
+    'uses' => 'Article\ArticleController@show'
+    
+]);
+
+Route::delete('articles/delete/{id}',[
+    'as' => 'article.destroy',
+    'uses' => 'Article\ArticleController@destroy',
+    'middleware' => 'CheckAdmin'
+]);
+
+Route::patch('articles/update/{id}',[
+    'as' => 'article.update',
+    'uses' => 'Article\ArticleController@update',
+    'middleware' => 'CheckAdmin'
+]);
+
+Route::get('articles/edit/{id}',[
+    'as' => 'article.edit',
+    'uses' => 'Article\ArticleController@edit',
+    'middleware' => 'CheckAdmin'
+]);
+
 

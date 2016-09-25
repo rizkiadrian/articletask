@@ -1,8 +1,8 @@
 <!-- <article box> -->
+@extends('layout.default')
+@section('content')
 <div class="container">
 	 <div id="blog" class="row"> 
-                
-        
                  <div class="col-md-10 blogShort">
                      <h1>Title 1</h1>
                      <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
@@ -47,3 +47,4 @@
              </div>
 </div>
 <!-- <article box> -->
+@stop

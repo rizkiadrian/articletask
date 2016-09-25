@@ -18,9 +18,11 @@
 				@if ($user = Sentinel::check())
 				<li class="active"><a href="#">{{$user -> username}} <span class="sr-only">(current)</span></a></li>
 				<li class="active"><a href="/logout">LOGOUT <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="/articles">SEE ARTICLE <span class="sr-only">(current)</span></a></li>
 				@else
 				<li class="active"><a href="#">Username<span class="sr-only">(current)</span></a></li>
 				<li class="active"><a href="/home">LOGIN <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="/articles">SEE ARTICLE <span class="sr-only">(current)</span></a></li>
 				@endif
 			</ul>
 		</div>

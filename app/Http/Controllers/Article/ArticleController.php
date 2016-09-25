@@ -5,6 +5,7 @@ use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Excel;
+use Sentinel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -42,15 +43,20 @@ class ArticleController extends Controller
     // Import a user provided file
     $file = Input::file('article');
     Excel::load($file, function($reader) {
-    // Getting all results
-    $data = new Article();
-    $data=$reader->toArray();
-    // ->all() is a wrapper for ->get() and will work the same
-    dd($data); 
-    
+    foreach ($reader->toObject() as $row)
+         {
+           $article = new Article;
+           $user = Sentinel::getUser();
+           $article->article_title = $row->article_title;
+           $article->article = $row->article;
+           $article->user_id = $user->id;
+           $article->user_email = $user->email;
+           $article->save();
 
+      }
+       
 });
-
+           return redirect()->route('login.index');
     }
 
     /**

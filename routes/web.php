@@ -26,9 +26,7 @@ Route::get('/register', function () {
 Route::get('/forgotp', function () {
     return view('content.forgotpass');
 });
-Route::get('/articles', function () {
-    return view('content.articlebox');
-});
+
 Route::get('/tes', function () {
     return view('content.articlebox');
 });
@@ -45,18 +43,23 @@ Route::get('admin/userlist',[
     'middleware' => 'CheckAdmin'
 ]);
 
-Route::get('article/create',[
+Route::get('articles/create',[
     'as' => 'article.create',
     'uses' => 'Article\ArticleController@create',
     'middleware' => 'Checklogin'
 ]);
+
+Route::get('articles',[
+    'as' => 'article.index',
+    'uses' => 'Article\ArticleController@index',
+    ]);
 
 Route::post('email',[
     'as' => 'email.sendemail',
     'uses' => 'Email\ConfirmUserController@store'  
 ]);
 
-Route::post('article/create/store',[
+Route::post('articles/create/store',[
     'as' => 'article.store',
     'uses' => 'Article\ArticleController@store'  
 ]);

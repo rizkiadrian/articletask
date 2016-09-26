@@ -6,9 +6,12 @@
         <h2>{{ $article->user_email }}</h2>
         <p>{{$article->article}}</p>
      </div></br></br>
-	<a href="{{ route('article.index') }}" class="btn btn-warning">Back To Article</a> <br/><br/>
-	
-  
+	<a href="{{ route('article.index') }}" class="btn btn-warning">Back To Article</a> <br/><br/>\<form method="GET" action="{{ route('article.export', $article->id) }}" accept-charset="UTF-8">
+				<div class="form-group col-lg-12">
+				<input name="_method" type="hidden" value="GET">
+                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
+	 <input onclick="return confirm('u sure ?');" type="submit" value="EXPORT" class="btn btn-danger"/>
+  </form>
 	<div class="container-fluid">
     <section class="container">
 		<div class="container-page">				
@@ -29,33 +32,5 @@
                                 
 </div>
 </div>
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-<h3>YOUR COMMENT HERE</h3>
-</div><!-- /col-sm-12 -->
-</div><!-- /row -->
-@foreach($comment as $comments)
-<div class="row">
-<div class="col-sm-1">
-<div class="thumbnail">
-<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-</div><!-- /thumbnail -->
-</div><!-- /col-sm-1 -->
-
-<div class="col-sm-5">
-<div class="panel panel-default">
-<div class="panel-heading">
-<strong>{{$comments->user->email}}</strong> <span class="text-muted">{{$comments->created_at}}</span>
-</div>
-<div class="panel-body">
-{{$comments->comment}}
-</div><!-- /panel-body -->
-</div><!-- /panel panel-default -->
-</div><!-- /col-sm-5 -->
-
-
-
-</div><!-- /container -->
-@endforeach
+@include('include.comment')
 @stop

@@ -122,5 +122,24 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
+    public function export($id){
+    $article = Article::where('id', '=', $id)->get()->toArray();
+    $comment = Comment::where('article_id', '=', $id)->get()->toArray();
+       return Excel::create($id, function($excel) use ($article,$comment) {
+        $excel->sheet('article', function($sheet1) use ($article)
+        {
+            $sheet1->fromArray($article);
+
+           
+        });
+        $excel->sheet('comment', function($sheet2) use ($comment)
+        {
+            $sheet2->fromArray($comment);
+           
+           
+        });
+       })->download("xls");
+  
+        }
 
 }

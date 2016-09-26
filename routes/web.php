@@ -73,17 +73,26 @@ Route::delete('admin/deleteuser/{id}',[
 
 
 
+Route::get('articles/show/{id}/export',[
+    'as' => 'article.export',
+    'uses' => 'Article\ArticleController@export'
+    
+]);
+
 Route::get('articles/show/{id}',[
     'as' => 'article.show',
     'uses' => 'Article\ArticleController@show'
     
 ]);
 
+
 Route::post('articles/show/{id}/comment',[
     'as' => 'comment.store',
     'uses' => 'Comment\CommentController@store'
     
 ]);
+
+
 
 
 

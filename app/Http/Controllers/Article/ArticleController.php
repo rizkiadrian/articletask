@@ -8,9 +8,13 @@ use Excel;
 use Sentinel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Comment;
+
 
 class ArticleController extends Controller
 {
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +23,7 @@ class ArticleController extends Controller
     public function index()
     {
         $article = Article::all();
+        
         return view('content.articlebox', compact('article'));
     }
 
@@ -67,9 +72,15 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+
         $article = Article::findOrFail($id);
-        return view('content.articleshow', compact('article'));
+        $id = $article->id;
+        $comment = Comment::where('article_id', '=', $article->id)->get();
+        return view('content.articleshow', compact('comment','article'));
+        
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -110,4 +121,6 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('article.index');
     }
+
+
 }

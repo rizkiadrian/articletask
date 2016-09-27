@@ -12,6 +12,7 @@
                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
 	 <input onclick="return confirm('u sure ?');" type="submit" value="EXPORT" class="btn btn-danger"/>
   </form>
+  @if($user = Sentinel::check())
 	<div class="container-fluid">
     <section class="container">
 		<div class="container-page">				
@@ -27,6 +28,9 @@
 				</div>
 			</div>
 		</div>
+		@else
+		<h3>login to comment </h3>
+		@endif
 		</form>
 	</section>
 	<div class="form-group">

@@ -27,7 +27,7 @@ Mail::send( 'email.email', $data, function( $message ) use ($data)
     $message->to( $data['email'] )->from( $data['from'], $data['first_name'] )->subject( 'Welcome!' );
 
 });
-
+         flash('Email sent check your email');
         return redirect('/home');
     }
        

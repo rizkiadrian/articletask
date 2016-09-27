@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Login;
-
+use flash;
 use Illuminate\Http\Request;
 use Sentinel;
 use App\Http\Requests;
@@ -56,9 +56,8 @@ else{
     {
         return redirect()->route('login.index');
     }
-
-       flash('user or name not recognized');
-       return redirect('/home');    
+       flash('Login fail','warning');
+       return redirect('/home');   
     }
 
     /**

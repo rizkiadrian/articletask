@@ -89,6 +89,7 @@ class ForgotLoginController extends Controller
     $data = $request->all();
     $user = Sentinel::findUserByid($id);
     Sentinel::update($user, $data);
+    flash('Your Password Changed, Login First!');
     return redirect('/home');
         
     }

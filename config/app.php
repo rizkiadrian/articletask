@@ -167,6 +167,7 @@ return [
           Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class, 
        Laracasts\Flash\FlashServiceProvider::class,
        Maatwebsite\Excel\ExcelServiceProvider::class,
+       Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Package Service Providers...
          */

@@ -7,9 +7,9 @@
      @foreach($article as $articles)
                  <div class="col-md-10 blogShort">
                      <h1>{{$articles->article_title}}</h1>
-                     <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                      
-                         <em>{{$articles->user_email}} <a href="http://bootsnipp.com/snippets/featured/sexy-sidebar-navigation" target="_blank">Sexy Sidebar Navigation</a></em>
+                     
+                         <em>{{$articles->user_email}} </em>
                      <article><p>
                          {{$articles->article}}
                          </p></article>

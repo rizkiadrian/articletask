@@ -10,7 +10,7 @@
                       
                         <div class="form-group">
                             <label for="username-email">E-mail</label>
-                            {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control'])!!}
+                            {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control','required' => 'required'])!!}
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

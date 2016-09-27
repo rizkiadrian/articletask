@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Comment;
+namespace App\Http\Controllers\Login;
 
 use Illuminate\Http\Request;
-use App\Comment;
-use App\Article;
 use Sentinel;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CommentController extends Controller
+class ForgotLoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-       
+        //
     }
 
     /**
@@ -28,7 +27,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('content.commentcreat');
+         return view('include.passrecovery');
     }
 
     /**
@@ -37,17 +36,23 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        public function store(Request $request)
+    public function store(Request $request)
+    {   
+        $attribute = '';
+        $email = $request->email;
+        $get = User::where('email', '=', $email)->get()->toArray();
+        $id = $get[0]['id'];
+        
+        
+    
+         if ($user = Sentinel::findUserByid($id))
+
     {
+        return redirect()->route('loginforgot.edit',compact('id'));
+    }
 
-        $user = Sentinel::getUser();
-        $comment = new Comment();
-        $comment->comment = $request->comment;
-        $comment->article_id = $request->id;
-        $comment->user_id  = $user->id;
-        $comment->save();
-        return redirect()->back();
-
+       
+       return redirect('/home');    
     }
 
     /**
@@ -69,7 +74,7 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('include.insertpassrecovery',compact('id'));
     }
 
     /**
@@ -81,7 +86,11 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $data = $request->all();
+    $user = Sentinel::findUserByid($id);
+    Sentinel::update($user, $data);
+    return redirect('/home');
+        
     }
 
     /**
@@ -92,8 +101,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::findOrFail($id);
-        $comment->delete();
-        return redirect()->back();
+        //
     }
 }

@@ -32,7 +32,8 @@ Route::get('/tes', function () {
 });
 Route::resource('users', 'User\UserController');
 Route::resource('login', 'Login\LoginController');
-Route::resource('comment', 'comment\CommentController');
+Route::resource('loginforgot', 'Login\ForgotLogincontroller');
+
 Route::get('logout', 'Login\LoginCOntroller@logout');
 Route::get('admin', [
     'uses' => 'Admin\UserController@index',
@@ -88,10 +89,16 @@ Route::get('articles/show/{id}',[
 
 Route::post('articles/show/{id}/comment',[
     'as' => 'comment.store',
-    'uses' => 'Comment\CommentController@store'
+    'uses' => 'Comment\CommentController@store',
+   
     
 ]);
 
+Route::delete('articles/comdel/{id}',[
+    'as' => 'comment.destroy',
+    'uses' => 'Comment\CommentController@destroy'
+    
+]);
 
 
 

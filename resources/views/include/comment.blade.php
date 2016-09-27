@@ -16,10 +16,21 @@
 <div class="col-sm-5">
 <div class="panel panel-default">
 <div class="panel-heading">
-<strong>{{$comments->user->email}}</strong> <span class="text-muted">{{$comments->created_at}}</span>
+
+<strong>@if($comments->user == ''){{$comment = "this acount disbanned"}}@else{{$comments->user->email}}@endif</strong> <span class="text-muted">{{$comments->created_at}}</span>
 </div>
 <div class="panel-body">
 {{$comments->comment}}
+                    @if ($user = Sentinel::check())
+                    @if ( $user->inRole('Admin'))
+                    <form method="POST" action="{{ route('comment.destroy', $comments->id) }}" accept-charset="UTF-8">
+                    <input name="_method" type="hidden" value="DELETE">
+                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                    <input onclick="return confirm('Anda yakin akan menghapus data ?');" type="submit" value="Hapus" class="btn btn-danger"/>
+                    </form>
+
+                    @endif
+                    @endif
 </div><!-- /panel-body -->
 </div><!-- /panel panel-default -->
 </div><!-- /col-sm-5 -->
@@ -28,3 +39,4 @@
 
 </div><!-- /container -->
 @endforeach
+

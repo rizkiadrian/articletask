@@ -10,12 +10,12 @@
 				{!! Form::open(array('route' => 'article.store', 'class' => 'form', 'files' => true)) !!}
 			<div class ="form-group col-lg-12">
 			<label>Import File</label>
-			 {!! Form::file('article', null, array('required', 'class'=>'form-control')) !!}
+			  {!! Form::file('article', null, array('required', 'class'=>'form-control')) !!}
 			</div>
             </div>
             </div>
               <div class="form-group">
-                                {!! Form::submit('Create Account', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+                                {!! Form::submit('submit article', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
 </div>
 	</section>
 </div>

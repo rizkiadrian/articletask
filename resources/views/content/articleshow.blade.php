@@ -27,6 +27,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</section>
 	<div class="form-group">
                                 

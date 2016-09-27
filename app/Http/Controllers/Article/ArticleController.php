@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Excel;
 use Sentinel;
-use App\Http\Requests;
+use App\Http\Requests\ImportRequest;
 use App\Http\Controllers\Controller;
 use App\Comment;
+use Illuminate\Support\Facades\DB;
 
 
 class ArticleController extends Controller
@@ -23,8 +24,8 @@ class ArticleController extends Controller
     public function index()
     {
         $article = Article::all();
-        
-        return view('content.articlebox', compact('article'));
+        $article = DB::table('articles')->paginate(5);
+        return view('content.articlebox', compact('article'),['articles' => $article]);
     }
 
     /**

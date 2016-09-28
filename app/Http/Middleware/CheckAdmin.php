@@ -21,6 +21,7 @@ class CheckAdmin
     if ( $user->inRole('Admin')){
         return $next($request);
     }
+    flash('youre not admin', 'warning');
     return redirect('home');
 
     }

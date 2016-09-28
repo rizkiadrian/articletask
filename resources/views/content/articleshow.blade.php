@@ -6,7 +6,7 @@
         <h2>{{ $article->user_email }}</h2>
         <p>{{$article->article}}</p>
      </div></br></br>
-	<a href="{{ route('article.index') }}" class="btn btn-warning">Back To Article</a> <br/><br/>\<form method="GET" action="{{ route('article.export', $article->id) }}" accept-charset="UTF-8">
+	<a href="{{ route('article.index') }}" class="btn btn-warning">Back To Article</a> <br/><br/><form method="GET" action="{{ route('article.export', $article->id) }}" accept-charset="UTF-8">
 				<div class="form-group col-lg-12">
 				<input name="_method" type="hidden" value="GET">
                     <input name="_token" type="hidden" value="{{ csrf_token() }}">

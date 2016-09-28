@@ -20,6 +20,7 @@ class CheckLogin
         return $next($request);
     }
     else{
+        flash('login first','warning');
         return redirect('home');
     }
     }

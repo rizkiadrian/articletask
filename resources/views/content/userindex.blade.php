@@ -18,10 +18,11 @@
             <td>{{$users->id}}</td>
             <td>{{$users->username}}</td>
             <td>{{$users->email}}</td>
-            <td><form method="POST" action="{{ route('userlist.destroy', $users->id) }}" accept-charset="UTF-8">
+            <td><form method="POST" action="{{ route('users.destroy', $users->id) }}" accept-charset="UTF-8">
                     <input name="_method" type="hidden" value="DELETE">
                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
                     <input onclick="return confirm('Are u Sure ?');" type="submit" value="delete" class="btn btn-danger"/></td> 
+                    </form>
         </tr>
         @endforeach
         </tbody>

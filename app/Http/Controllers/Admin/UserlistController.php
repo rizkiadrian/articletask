@@ -15,8 +15,6 @@ class UserlistController extends Controller
     }
 
     public function destroy($id){
-    	$user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('userlist.index');
+    	
     }
 }

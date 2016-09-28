@@ -30,7 +30,14 @@ Route::get('/forgotp', function () {
 Route::get('/tes', function () {
     return view('content.articlebox');
 });
-Route::resource('users', 'User\UserController');
+Route::resource('users', 'User\UserController',[
+       'except' => ['destroy']
+    ]);
+Route::delete('users/delete/{id}', [
+    'as' => 'users.destroy',
+    'uses' => 'User\UserController@destroy',
+    'middleware' => 'CheckAdmin'
+]);
 Route::resource('login', 'Login\LoginController');
 Route::resource('loginforgot', 'Login\ForgotLogincontroller');
 
@@ -65,13 +72,6 @@ Route::post('articles/create/store',[
     'as' => 'article.store',
     'uses' => 'Article\ArticleController@store'  
 ]);
-
-Route::delete('admin/deleteuser/{id}',[
-    'as' => 'userlist.destroy',
-    'uses' => 'Admin\UserlistController@destroy',
-    'middleware' => 'CheckAdmin'
-]);
-
 
 
 Route::get('articles/show/{id}/export',[

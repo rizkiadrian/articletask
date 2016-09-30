@@ -20,7 +20,7 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
                     <a class="btn btn-blog pull-right marginBottom10" href="{{ route('article.edit', $articles->id) }}">EDIT</a>
-                    <input onclick="return confirm('Anda yakin akan menghapus data ?');" type="submit" value="Hapus" class="btn btn-danger"/>
+                    <input onclick="return confirm('Anda yakin akan menghapus data ?');" type="submit" value="DELETE" class="btn btn-danger"/>
                 </form>
                     @endif
                     @endif

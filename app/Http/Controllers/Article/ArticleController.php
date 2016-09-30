@@ -44,7 +44,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImportRequest $request)
     {
     // Import a user provided file
     $file = Input::file('article');
@@ -58,6 +58,7 @@ class ArticleController extends Controller
            $article->user_id = $user->id;
            $article->user_email = $user->email;
            $article->save();
+           
 
       }
        

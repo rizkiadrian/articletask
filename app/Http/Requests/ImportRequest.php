@@ -24,7 +24,7 @@ class ImportRequest extends FormRequest
     public function rules()
     {
         return [
-             'article' => 'required | mimes:xls,xlsx | max:1000',
+             'article' => 'required|mimes:xlsx,xls|max:1000',
         ];
     }
 }
